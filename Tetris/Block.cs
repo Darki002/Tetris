@@ -2,17 +2,17 @@
 
 public class Block(BlockType blockType)
 {
-    private readonly List<Tile> tile = BlockTemplates.GetFromType(blockType);
+    private readonly List<Tile> tiles = BlockTemplates.GetFromType(blockType);
 
     private List<Tile>? rotationPreview = null;
     
-    public IReadOnlyList<Tile> Tile => tile;
+    public IReadOnlyList<Tile> Tiles => tiles;
 
-    public void MoveDown() => tile.ForEach(t => t.MoveDown());
+    public void MoveDown() => tiles.ForEach(t => t.MoveDown());
 
     public List<Tile> PreviewRotation(RotationDirection rotationDirection)
     {
-        rotationPreview = tile;
+        rotationPreview = tiles;
         return rotationPreview;
     }
 
