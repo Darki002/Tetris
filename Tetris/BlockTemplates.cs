@@ -6,12 +6,12 @@ public static class BlockTemplates
     {
         return blockType switch
         {
-            BlockType.Ka => Ka(),
+            BlockType.Test => Test(),
             _ => throw new ArgumentOutOfRangeException(nameof(blockType), blockType, null)
         };
     }
 
-    private static List<Tile> Ka()
+    private static List<Tile> Test()
     {
         return [new Tile(Board.Width / 2, Board.Height + 1)];
     }

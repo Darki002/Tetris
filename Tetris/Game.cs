@@ -38,6 +38,6 @@ public class Game
 
     private static Block CreateNewBlock()
     {
-        return new Block(BlockType.Ka);
+        return new Block(BlockType.Test);
     }
 }
