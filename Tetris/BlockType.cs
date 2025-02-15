@@ -2,5 +2,7 @@
 
 public enum BlockType
 {
-    Test
+    Test,
+    TestWidth,
+    TestHeight
 }
