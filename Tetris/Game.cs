@@ -37,8 +37,12 @@ public class Game
         {
             board.AddBlock(currentBlock);
             currentBlock = null;
+
+            board.TryRemoveRows();
+            
             IsGameOver = board.IsGameOver();
             if(IsGameOver) timer.Stop();
+            
             return;
         }
         
