@@ -1,9 +1,7 @@
 ﻿namespace Tetris;
 
-public class Block(BlockType blockType)
+public class Block(List<Tile> tiles)
 {
-    private readonly List<Tile> tiles = BlockTemplates.GetFromType(blockType);
-
     private List<Tile>? rotationPreview = null;
     
     public IReadOnlyList<Tile> Tiles => tiles;

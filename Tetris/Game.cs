@@ -29,7 +29,7 @@ public class Game
 
     private void GameLoop(object? _, ElapsedEventArgs __)
     {
-        currentBlock ??= CreateNewBlock();
+        currentBlock ??= BlockTemplates.GetRandom();
         
         // TODO move block by User Input
 
@@ -44,10 +44,5 @@ public class Game
         
         currentBlock.MoveDown();
         printer.Print(board, currentBlock);
-    }
-
-    private static Block CreateNewBlock()
-    {
-        return new Block(BlockType.Test);
     }
 }
