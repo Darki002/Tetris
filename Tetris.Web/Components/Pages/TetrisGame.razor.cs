@@ -14,7 +14,10 @@ public partial class TetrisGame : IPrinter
 
     public void Print(List<Tile> updatedTiles)
     {
-        this.tiles = updatedTiles;
+        InvokeAsync(() =>
+        {
+            tiles = updatedTiles;
+        });
         StateHasChanged();
     }
 }

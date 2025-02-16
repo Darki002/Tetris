@@ -1,0 +1,13 @@
+﻿.tile {
+    width: 9px;
+    height: 9px;
+    border: 1px solid black;
+}
+
+.block {
+    background-color: red;
+}
+
+.empty{
+    background-color: gray;
+}

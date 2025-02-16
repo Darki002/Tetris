@@ -9,7 +9,7 @@ public class Tile(int x, int y)
 
     internal int? PreviewX { get; private set; }
     internal int? PreviewY { get; private set; }
-
+    
     public void MoveDown() => Y--;
     
     public void PreviewMove(Direction? moveDir)
@@ -48,5 +48,10 @@ public class Tile(int x, int y)
             Y = PreviewY.Value;
             PreviewY = null;
         }
+    }
+
+    public override string ToString()
+    {
+        return $"X: {X} Y: {Y}";
     }
 }
