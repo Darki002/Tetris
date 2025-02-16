@@ -1,4 +1,6 @@
-﻿namespace Tetris.ConsoleUi;
+﻿using Tetris.Enums;
+
+namespace Tetris.ConsoleUi;
 
 public static class Program
 {
@@ -9,6 +11,19 @@ public static class Program
         game = new Game(new Printer());
         game.Start();
 
-        while (game.IsGameOver is false) { }
+        while (game.IsGameOver is false)
+        {
+            var key = Console.ReadKey(true);
+
+            switch (key.Key)
+            {
+                case ConsoleKey.RightArrow:
+                    game.SetNextMoveDir(Direction.Right);
+                    break;
+                case ConsoleKey.LeftArrow:
+                    game.SetNextMoveDir(Direction.Left);
+                    break;
+            }
+        }
     }
 }

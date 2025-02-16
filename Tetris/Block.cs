@@ -1,21 +1,23 @@
-﻿namespace Tetris;
+﻿using Tetris.Enums;
+
+namespace Tetris;
 
 public class Block(List<Tile> tiles)
 {
-    private List<Tile>? rotationPreview = null;
-    
     public IReadOnlyList<Tile> Tiles => tiles;
 
-    public void MoveDown() => tiles.ForEach(t => t.MoveDown());
-
-    public List<Tile> PreviewRotation(RotationDirection rotationDirection)
+    public void TryMove(Direction? moveDir)
     {
-        rotationPreview = tiles;
-        return rotationPreview;
+        tiles.ForEach(t => t.PreviewMove(moveDir));
+        if (tiles.Any(t => t.PreviewX is >= Board.Width or < 0) is false)
+        {
+            tiles.ForEach(t => t.CommitMove());
+        }
     }
-
-    public void CommitRotation()
+    
+    public List<Tile> TryRotation(Direction rotationDirection)
     {
-        // Update Tiles, not replace them in the list, so that the board doesn't lose track of them
+        // TODO preview rotation and then commit on tiles
+        throw new NotImplementedException();
     }
 }

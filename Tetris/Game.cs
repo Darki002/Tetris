@@ -1,4 +1,5 @@
 ﻿using System.Timers;
+using Tetris.Enums;
 using Timer = System.Timers.Timer;
 
 namespace Tetris;
@@ -10,6 +11,8 @@ public class Game
 
     private readonly Board board;
     private Block? currentBlock;
+
+    private Direction? nextMoveDir;
 
     public Game(IPrinter printer)
     {
@@ -30,8 +33,12 @@ public class Game
     private void GameLoop(object? _, ElapsedEventArgs __)
     {
         currentBlock ??= BlockTemplates.GetRandom();
-        
-        // TODO move block by User Input
+
+        if (nextMoveDir is not null)
+        {
+            currentBlock.TryMove(nextMoveDir);
+            nextMoveDir = null;
+        }
 
         if (board.IsBlocked(currentBlock))
         {
@@ -46,7 +53,9 @@ public class Game
             return;
         }
         
-        currentBlock.MoveDown();
+        currentBlock.TryMove(Direction.Down);
         printer.Print(board, currentBlock);
     }
+
+    public void SetNextMoveDir(Direction direction) => nextMoveDir = direction;
 }

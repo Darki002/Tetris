@@ -1,4 +1,6 @@
-﻿namespace Tetris;
+﻿using Tetris.Enums;
+
+namespace Tetris;
 
 public static class BlockTemplates 
 {

@@ -1,4 +1,4 @@
-﻿namespace Tetris;
+﻿namespace Tetris.Enums;
 
 public enum BlockType
 {
