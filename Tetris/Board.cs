@@ -42,6 +42,7 @@ public class Board
         for (var i = 0; i <= Height; i++)
         {
             var row = GetRow(i);
+            if(row.Count == 0) return;
             if (row.Count >= Width) RemoveRow(row, i);
         }
     }
