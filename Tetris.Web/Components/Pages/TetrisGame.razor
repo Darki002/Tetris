@@ -1,21 +1,20 @@
 ﻿@page "/game"
 
 <div class="container">
+    @fuckThisShit
     @if (game.IsGameOver)
     {
         <h1>Game Over</h1>
     }
     else
     {
-        Console.WriteLine("Server");
-        
         <div class="board" style="grid-template-columns: repeat(@Board.Width, 10px); grid-template-rows: repeat(@Board.Height, 10px)">
             @for (var row = 0; row < Board.Height; row++)
             {
                 for (var col = 0; col < Board.Width; col++)
                 {
                     var tile = tiles.SingleOrDefault(t => t.X == col && t.Y == row);
-                    <TetrisTile Tile="tile" />
+                    <TetrisTile Tile="tile"/>
                 }
             }
         </div>

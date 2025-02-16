@@ -2,5 +2,5 @@
 
 public interface IPrinter
 {
-    void Print(List<Tile> updatedTiles);
+    void Print(IReadOnlyList<Tile> updatedTiles);
 }

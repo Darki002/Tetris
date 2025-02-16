@@ -50,6 +50,7 @@ public class Game
             IsGameOver = board.IsGameOver();
             if(IsGameOver) timer.Stop();
             
+            printer.Print(board.Tiles);
             return;
         }
         

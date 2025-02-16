@@ -2,7 +2,7 @@
 
 public class Printer : IPrinter
 {
-    public void Print(List<Tile> updatedTiles)
+    public void Print(IReadOnlyList<Tile> updatedTiles)
     {
         Console.Clear();
 

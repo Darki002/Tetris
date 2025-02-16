@@ -2,7 +2,7 @@
 
 public class DebugPrinter : IPrinter
 {
-    public void Print(List<Tile> updatedTiles)
+    public void Print(IReadOnlyList<Tile> updatedTiles)
     {
         Console.WriteLine("------------------Print------------------");
         
