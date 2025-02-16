@@ -29,6 +29,8 @@ public class Game
 
     private void GameLoop(object? _, ElapsedEventArgs __)
     {
+        // TODO might have to change a few thing here
+        // https://tetris.wiki/Tetris_Guideline#:~:text=The%20Tetris%20Guideline%20requires%20Tetris,move%20down%20immediately%20after%20appearing.
         currentBlock ??= BlockTemplates.GetRandom();
 
         if (nextMoveDir is not null)
