@@ -2,7 +2,7 @@
 
 public class Board
 {
-    public const int Height = 10;
+    public const int Height = 22;
 
     public const int Width = 10;
     
