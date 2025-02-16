@@ -8,6 +8,8 @@ public class Block(List<Tile> tiles)
 
     public void TryMove(Direction? moveDir)
     {
+        // TODO move left seems to be broke!!!
+        
         tiles.ForEach(t => t.PreviewMove(moveDir));
         if (tiles.Any(t => t.PreviewX is >= Board.Width or < 0) is false)
         {

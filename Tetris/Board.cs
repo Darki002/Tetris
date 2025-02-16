@@ -17,7 +17,7 @@ public class Board
         }
     }
 
-    public List<Tile> Tiles => board
+    public IReadOnlyList<Tile> Tiles => board
         .SelectMany(b => b)
         .Where(t => t != null)
         .ToList()!;

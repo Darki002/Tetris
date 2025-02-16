@@ -7,8 +7,8 @@ public class Tile(int x, int y)
     public int X { get; private set; } = x;
     public int Y { get; private set; } = y;
 
-    public int? PreviewX { get; private set; }
-    public int? PreviewY { get; private set; }
+    internal int? PreviewX { get; private set; }
+    internal int? PreviewY { get; private set; }
 
     public void MoveDown() => Y--;
     
