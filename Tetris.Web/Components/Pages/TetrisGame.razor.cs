@@ -12,14 +12,9 @@ public partial class TetrisGame : IPrinter
         game.Start();
     }
 
-    protected override void OnAfterRender(bool firstRender)
+    public void Print(List<Tile> updatedTiles)
     {
-        
-    }
-
-    public void Print(Board board, Block currentBlock)
-    {
-        tiles = [..board.Tiles, ..currentBlock.Tiles];
+        this.tiles = updatedTiles;
         StateHasChanged();
     }
 }

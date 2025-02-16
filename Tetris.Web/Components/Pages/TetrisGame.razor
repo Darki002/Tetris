@@ -1,5 +1,18 @@
 ﻿@page "/Game"
 
 <div class="container">
-    
+    @if (game.IsGameOver)
+    {
+        <h1>Game Over</h1>
+    }
+    else
+    {
+        for (var row = 0; row < Board.Height; row++)
+        {
+            for (var col = 0; col < Board.Width; col++)
+            {
+                
+            }
+        }
+    }
 </div>

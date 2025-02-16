@@ -2,7 +2,7 @@
 
 public class Printer : IPrinter
 {
-    public void Print(Board board, Block currentBlock)
+    public void Print(List<Tile> updatedTiles)
     {
         Console.Clear();
 
@@ -24,12 +24,7 @@ public class Printer : IPrinter
             Console.Write("||");
         }
         
-        foreach (var tile in board.Tiles)
-        {
-            Console.SetCursorPosition(tile.X * 2 + 1, Board.Height - tile.Y + 1);
-            Console.Write("[]");
-        }
-        foreach (var tile in currentBlock.Tiles)
+        foreach (var tile in updatedTiles)
         {
             Console.SetCursorPosition(tile.X * 2 + 1, Board.Height - tile.Y + 1);
             Console.Write("[]");

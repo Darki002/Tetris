@@ -2,5 +2,5 @@
 
 public interface IPrinter
 {
-    void Print(Board board, Block currentBlock);
+    void Print(List<Tile> updatedTiles);
 }

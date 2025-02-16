@@ -54,7 +54,7 @@ public class Game
         }
         
         currentBlock.MoveDown();
-        printer.Print(board, currentBlock);
+        printer.Print([..board.Tiles, ..currentBlock.Tiles]);
     }
 
     public void SetNextMoveDir(Direction direction) => nextMoveDir = direction;
