@@ -25,10 +25,7 @@ public class Game
 
     public bool IsGameOver = false;
 
-    public void Start()
-    {
-        timer.Start();
-    }
+    public void Start() => timer.Start();
 
     private void GameLoop(object? _, ElapsedEventArgs __)
     {
@@ -36,6 +33,7 @@ public class Game
 
         if (nextMoveDir is not null)
         {
+            Console.WriteLine(nextMoveDir);
             currentBlock.TryMove(nextMoveDir);
             nextMoveDir = null;
         }
@@ -53,7 +51,7 @@ public class Game
             return;
         }
         
-        currentBlock.TryMove(Direction.Down);
+        currentBlock.MoveDown();
         printer.Print(board, currentBlock);
     }
 

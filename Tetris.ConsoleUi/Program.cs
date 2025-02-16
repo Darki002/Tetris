@@ -8,7 +8,7 @@ public static class Program
     
     public static void Main()
     {
-        game = new Game(new Printer());
+        game = new Game(new DebugPrinter());
         game.Start();
 
         while (game.IsGameOver is false)

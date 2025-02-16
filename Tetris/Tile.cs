@@ -14,6 +14,9 @@ public class Tile(int x, int y)
     
     public void PreviewMove(Direction? moveDir)
     {
+        PreviewX = null;
+        PreviewY = null;
+        
         switch (moveDir)
         {
             case Direction.Down:
