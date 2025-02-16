@@ -13,41 +13,100 @@ public static class BlockTemplates
         var blockType = GetRandomBlockType();
         return blockType switch
         {
-            BlockType.Test => Test(),
-            BlockType.TestWidth => TestWidth(),
-            BlockType.TestHeight => TestHeight(),
-            BlockType.FullWidth => FullWidth(),
+            BlockType.I => ShapeI(),
+            BlockType.J => ShapeJ(),
+            BlockType.L => ShapeL(),
+            BlockType.O => ShapeO(),
+            BlockType.S => ShapeS(),
+            BlockType.Z => ShapeZ(),
+            BlockType.T => ShapeT(),
             _ => throw new ArgumentOutOfRangeException(nameof(blockType), blockType, null)
         };
     }
-
-    private static Block FullWidth()
+    
+    private static Block ShapeI()
     {
-        var tiles = new List<Tile>();
+        const int center = Board.Width / 2;
 
-        for (var i = 0; i < Board.Width; i++)
-        {
-            tiles.Add(new Tile(i, Board.Height));
-        }
-
-        return new Block(tiles);
+        return new Block([
+            new Tile(center - 1, Board.Height - 1),
+            new Tile(center, Board.Height - 1),
+            new Tile(center + 1, Board.Height - 1),
+            new Tile(center + 2, Board.Height - 1),
+        ]);
     }
 
-    private static Block TestHeight() => new Block([
-        new Tile(Board.Width / 2, Board.Height + 1),
-        new Tile(Board.Width / 2, Board.Height + 2)
-    ]);
-
-    private static Block TestWidth() => new Block([
-        new Tile(Board.Width / 2, Board.Height + 1),
-        new Tile(Board.Width / 2 + 1, Board.Height + 1)
-    ]);
-
-    private static Block Test()
+    private static Block ShapeJ()
     {
-        return new Block([new Tile(Board.Width / 2, Board.Height + 1)]);
+        const int center = Board.Width / 2;
+        
+        return new Block([
+            new Tile(center - 1, Board.Height),
+            new Tile(center - 1, Board.Height - 1),
+            new Tile(center, Board.Height - 1),
+            new Tile(center + 1, Board.Height - 1),
+        ]);
     }
 
+    private static Block ShapeL()
+    {
+        const int center = Board.Width / 2;
+        
+        return new Block([
+            new Tile(center - 1, Board.Height - 1),
+            new Tile(center, Board.Height - 1),
+            new Tile(center + 1, Board.Height - 1),
+            new Tile(center + 1, Board.Height),
+        ]);
+    }
+
+    private static Block ShapeO()
+    {
+        const int center = Board.Width / 2;
+        
+        return new Block([
+            new Tile(center, Board.Height),
+            new Tile(center, Board.Height - 1),
+            new Tile(center + 1, Board.Height),
+            new Tile(center + 1, Board.Height - 1),
+        ]);
+    }
+
+    private static Block ShapeS()
+    {
+        const int center = Board.Width / 2;
+        
+        return new Block([
+            new Tile(center - 1, Board.Height - 1),
+            new Tile(center, Board.Height - 1),
+            new Tile(center, Board.Height),
+            new Tile(center + 1, Board.Height),
+        ]);
+    }
+
+    private static Block ShapeZ()
+    {
+        const int center = Board.Width / 2;
+        
+        return new Block([
+            new Tile(center - 1, Board.Height),
+            new Tile(center, Board.Height),
+            new Tile(center, Board.Height - 1),
+            new Tile(center + 1, Board.Height - 1),
+        ]);
+    }
+    private static Block ShapeT()
+    {
+        const int center = Board.Width / 2;
+        
+        return new Block([
+            new Tile(center - 1, Board.Height - 1),
+            new Tile(center, Board.Height - 1),
+            new Tile(center + 1, Board.Height - 1),
+            new Tile(center, Board.Height),
+        ]);
+    }
+    
     private static BlockType GetRandomBlockType()
     {
         return (BlockType)Values.GetValue(Random.Next(Values.Length))!;
