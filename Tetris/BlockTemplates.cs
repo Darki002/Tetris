@@ -14,8 +14,21 @@ public static class BlockTemplates
             BlockType.Test => Test(),
             BlockType.TestWidth => TestWidth(),
             BlockType.TestHeight => TestHeight(),
+            BlockType.FullWidth => FullWidth(),
             _ => throw new ArgumentOutOfRangeException(nameof(blockType), blockType, null)
         };
+    }
+
+    private static Block FullWidth()
+    {
+        var tiles = new List<Tile>();
+
+        for (var i = 0; i < Board.Width; i++)
+        {
+            tiles.Add(new Tile(i, Board.Height));
+        }
+
+        return new Block(tiles);
     }
 
     private static Block TestHeight() => new Block([

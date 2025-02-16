@@ -48,6 +48,7 @@ public class Board
 
     private void RemoveRow(List<Tile> row, int rowIndex)
     {
+        Console.WriteLine($"Remove Row {rowIndex}");
         row.ForEach(t => board[t.X].Remove(t));
         
         var tilesToMove = board

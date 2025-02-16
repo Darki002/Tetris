@@ -4,5 +4,6 @@ public enum BlockType
 {
     Test,
     TestWidth,
-    TestHeight
+    TestHeight,
+    FullWidth
 }
