@@ -1,9 +1,12 @@
 ﻿namespace Tetris.Enums;
 
 public enum BlockType
-{
-    Test,
-    TestWidth,
-    TestHeight,
-    FullWidth
+{ 
+    I,
+    J,
+    L,
+    O,
+    S,
+    Z,
+    T
 }
