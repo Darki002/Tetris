@@ -12,8 +12,6 @@ public class Game
     private readonly Board board;
     private Block? currentBlock;
 
-    private Direction? nextMoveDir;
-
     public Game(IPrinter printer)
     {
         this.printer = printer;
@@ -33,12 +31,6 @@ public class Game
         // https://tetris.wiki/Tetris_Guideline#:~:text=The%20Tetris%20Guideline%20requires%20Tetris,move%20down%20immediately%20after%20appearing.
         currentBlock ??= BlockTemplates.GetRandom();
 
-        if (nextMoveDir is not null)
-        {
-            currentBlock.TryMove(nextMoveDir);
-            nextMoveDir = null;
-        }
-
         if (board.IsBlocked(currentBlock))
         {
             board.AddBlock(currentBlock);
@@ -57,5 +49,5 @@ public class Game
         printer.Print([..board.Tiles, ..currentBlock.Tiles]);
     }
 
-    public void SetNextMoveDir(Direction direction) => nextMoveDir = direction;
+    public void SetNextMoveDir(Direction direction) => currentBlock?.TryMove(direction, board.Tiles);
 }
