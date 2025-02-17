@@ -1,6 +1,6 @@
 ﻿@page "/game"
 
-<div class="container">
+<div class="container" @ref="container" tabindex="0" @onkeydown="OnKeyPress">
     @if (game.IsGameOver)
     {
         <h1>Game Over</h1>
@@ -10,7 +10,7 @@
         <div class="board" style="grid-template-columns: repeat(@Board.Width, 10px); grid-template-rows: repeat(@Board.Height, 10px)">
             @for (var y = Board.Height - 1; y >= 0; y--)
             {
-                for (var x = Board.Width - 1; x >= 0; x--)
+                for (var x = 0; x < Board.Width; x++)
                 {
                     var tile = tiles.SingleOrDefault(t => t.X == x && t.Y == y);
                     <TetrisTile Tile="@tile"/>

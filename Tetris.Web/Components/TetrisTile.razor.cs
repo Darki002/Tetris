@@ -11,8 +11,6 @@ public partial class TetrisTile
 
     protected override void OnParametersSet()
     {
-        if(Tile is not null) Console.WriteLine(Tile);
-        
         var tileClass = Tile is null ? "empty" : "block";
         cssClass = $"tile {tileClass}";
     }

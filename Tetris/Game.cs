@@ -35,7 +35,6 @@ public class Game
 
         if (nextMoveDir is not null)
         {
-            Console.WriteLine(nextMoveDir);
             currentBlock.TryMove(nextMoveDir);
             nextMoveDir = null;
         }
