@@ -6,26 +6,15 @@ public class Board
 
     public const int Width = 10;
     
-    private readonly List<Tile>[] board;
+    private bool[,] board = new bool[Width, Height];
 
-    public Board()
-    {
-        board = new List<Tile>[Width];
-        for (var i = 0; i < board.Length; i++)
-        {
-            board[i] = [];
-        }
-    }
-
-    public IReadOnlyList<Tile> Tiles => board
-        .SelectMany(b => b)
-        .ToList();
+    public bool[,] Tiles => (bool[,])board.Clone();
 
     public void AddBlock(Block block)
     {
         foreach (var tile in block.Tiles)
         {
-            board[tile.X].Add(tile);
+            board[tile.X, tile.Y] = true;
         }
     }
 
@@ -33,7 +22,7 @@ public class Board
 
     private bool IsBlocked(Tile tile)
     {
-        return tile.Y - 1 < 0 || board[tile.X].Any(t => t.Y == tile.Y - 1);
+        return tile.Y - 1 < 0 || board[tile.X, tile.Y - 1];
     }
     
     public void TryRemoveRows()
@@ -41,29 +30,31 @@ public class Board
         for (var i = 0; i <= Height; i++)
         {
             var row = GetRow(i);
-            if(row.Count == 0) return;
-            if (row.Count >= Width) RemoveRow(row, i);
+            if(row.Length == 0) return;
+            if (row.Count(r => r) >= Width) RemoveRow(i);
         }
     }
 
-    private void RemoveRow(List<Tile> row, int rowIndex)
+    private void RemoveRow(int rowIndex)
     {
-        Console.WriteLine($"Remove Row {rowIndex}");
-        row.ForEach(t => board[t.X].Remove(t));
-        
-        var tilesToMove = board
-            .SelectMany(b => b)
-            .Where(t => t.Y > rowIndex);
-        foreach (var tile in tilesToMove) tile.MoveDown();
+        var old = board;
+        board = new bool[Width, Height];
+
+        for (var x = 0; x < Width; x++)
+        {
+            for (var y = rowIndex; y < Height - 1; y++)
+            {
+                board[x, y] = old[x, y + 1];
+            }
+        }
     }
 
-    private List<Tile> GetRow(int row)
+    private bool[] GetRow(int row)
     {
-        return board
-            .SelectMany(col => col)
-            .Where(t => t.Y == row)
-            .ToList();
+        return Enumerable.Range(0, board.GetLength(1))
+            .Select(x => board[row, x])
+            .ToArray();
     }
 
-    public bool IsGameOver() => board.Any(b => b.Count > Height);
+    public bool IsGameOver() => GetRow(Height - 1).Any(b => b);
 }

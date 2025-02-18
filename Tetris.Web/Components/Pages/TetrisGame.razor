@@ -12,8 +12,8 @@
             {
                 for (var x = 0; x < Board.Width; x++)
                 {
-                    var tile = tiles.SingleOrDefault(t => t.X == x && t.Y == y);
-                    <TetrisTile Tile="@tile"/>
+                    var tile = tiles[x, y];
+                    <TetrisTile HasBlock="@tile"/>
                 }
             }
         </div>

@@ -46,8 +46,13 @@ public class Game
         }
         
         currentBlock.MoveDown();
-        printer.Print([..board.Tiles, ..currentBlock.Tiles]);
+        printer.Print(currentBlock.AddTo(board.Tiles));
     }
 
-    public void SetNextMoveDir(Direction direction) => currentBlock?.TryMove(direction, board.Tiles);
+    public void SetNextMoveDir(Direction direction)
+    {
+        if(currentBlock is null) return;
+        currentBlock.TryMove(direction, board.Tiles);
+        printer.Print(currentBlock.AddTo(board.Tiles));
+    }
 }

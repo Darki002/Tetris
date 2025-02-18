@@ -2,13 +2,16 @@
 
 public class DebugPrinter : IPrinter
 {
-    public void Print(IReadOnlyList<Tile> updatedTiles)
+    public void Print(bool[,] updatedTiles)
     {
         Console.WriteLine("------------------Print------------------");
-        
-        foreach (var tile in updatedTiles)
+
+        for (var x = 0; x < Board.Width; x++)
         {
-            Console.WriteLine($"X: {tile.X} Y: {tile.Y}");
+            for (var y = 0; y < Board.Height; y++)
+            {
+                Console.WriteLine($"X: {x} Y: {x} : {updatedTiles[x,y]}");
+            }
         }
     }
 }

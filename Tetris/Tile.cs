@@ -7,15 +7,15 @@ public class Tile(int x, int y)
     public int X { get; private set; } = x;
     public int Y { get; private set; } = y;
 
-    internal int? PreviewX { get; private set; }
-    internal int? PreviewY { get; private set; }
+    internal int PreviewX { get; private set; } = x;
+    internal int PreviewY { get; private set; } = y;
     
     public void MoveDown() => Y--;
     
     public void PreviewMove(Direction? moveDir)
     {
-        PreviewX = null;
-        PreviewY = null;
+        PreviewX = X;
+        PreviewY = Y;
         
         switch (moveDir)
         {
@@ -37,17 +37,8 @@ public class Tile(int x, int y)
 
     public void CommitMove()
     {
-        if (PreviewX is not null)
-        {
-            X = PreviewX.Value;
-            PreviewX = null;
-        }
-
-        if (PreviewY is not null)
-        {
-            Y = PreviewY.Value;
-            PreviewY = null;
-        }
+        X = PreviewX;
+        Y = PreviewY;
     }
 
     public override string ToString()

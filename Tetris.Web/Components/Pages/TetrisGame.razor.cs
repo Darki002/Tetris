@@ -8,7 +8,7 @@ public partial class TetrisGame : IPrinter
 {
     private Game game = null!;
 
-    private List<Tile> tiles = [];
+    private bool[,] tiles = new bool[Board.Width,Board.Height];
     
     private ElementReference container;
 
@@ -23,15 +23,6 @@ public partial class TetrisGame : IPrinter
         if(firstRender) await container.FocusAsync();
     }
 
-    public void Print(IReadOnlyList<Tile> updatedTiles)
-    {
-        InvokeAsync(() =>
-        {
-            tiles = [..updatedTiles];
-            StateHasChanged();
-        });
-    }
-
     private void OnKeyPress(KeyboardEventArgs obj)
     {
         switch (obj.Key)
@@ -43,5 +34,14 @@ public partial class TetrisGame : IPrinter
                 game.SetNextMoveDir(Direction.Left);
                 break;
         }
+    }
+
+    public void Print(bool[,] updatedTiles)
+    {
+        InvokeAsync(() =>
+        {
+            tiles = updatedTiles;
+            StateHasChanged();
+        });
     }
 }
