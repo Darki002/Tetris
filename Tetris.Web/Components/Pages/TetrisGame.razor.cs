@@ -8,7 +8,7 @@ public partial class TetrisGame : IPrinter
 {
     private Game game = null!;
 
-    private bool[,] tiles = new bool[Board.Width,Board.Height];
+    private BlockType?[,] tiles = new BlockType?[Board.Width,Board.Height];
     
     private ElementReference container;
 
@@ -36,7 +36,7 @@ public partial class TetrisGame : IPrinter
         }
     }
 
-    public void Print(bool[,] updatedTiles)
+    public void Print(BlockType?[,] updatedTiles)
     {
         InvokeAsync(() =>
         {

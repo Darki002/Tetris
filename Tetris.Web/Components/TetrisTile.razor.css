@@ -4,10 +4,28 @@
     border: 1px solid black;
 }
 
-.block {
-    background-color: red;
-}
-
 .empty{
     background-color: gray;
+}
+
+.I {
+    background-color: lightblue;
+}
+.J {
+    background-color: darkblue;
+}
+.L{
+    background-color: orange;
+}
+.O{
+    background-color: yellow;
+}
+.S{
+    background-color: green;
+}
+.Z{
+    background-color: red;
+}
+.T{
+    background-color: magenta;
 }

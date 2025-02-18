@@ -2,8 +2,10 @@
 
 namespace Tetris;
 
-public class Tile(int x, int y)
+public class Tile(int x, int y, BlockType blockType)
 {
+    public BlockType BlockType { get; } = blockType;
+    
     public int X { get; private set; } = x;
     public int Y { get; private set; } = y;
 

@@ -6,7 +6,7 @@ public static class BlockTemplates
 {
     private static readonly Array Values = Enum.GetValues(typeof(BlockType));
 
-    private static readonly Random Random = new Random();
+    private static readonly Random Random = new();
     
     public static Block GetRandom()
     {
@@ -29,10 +29,10 @@ public static class BlockTemplates
         const int center = Board.Width / 2;
 
         return new Block([
-            new Tile(center - 1, Board.Height - 1),
-            new Tile(center, Board.Height - 1),
-            new Tile(center + 1, Board.Height - 1),
-            new Tile(center + 2, Board.Height - 1),
+            new Tile(center - 1, Board.Height - 1, BlockType.I),
+            new Tile(center, Board.Height - 1, BlockType.I),
+            new Tile(center + 1, Board.Height - 1, BlockType.I),
+            new Tile(center + 2, Board.Height - 1, BlockType.I),
         ]);
     }
 
@@ -41,10 +41,10 @@ public static class BlockTemplates
         const int center = Board.Width / 2;
         
         return new Block([
-            new Tile(center - 1, Board.Height),
-            new Tile(center - 1, Board.Height - 1),
-            new Tile(center, Board.Height - 1),
-            new Tile(center + 1, Board.Height - 1),
+            new Tile(center - 1, Board.Height, BlockType.J),
+            new Tile(center - 1, Board.Height - 1, BlockType.J),
+            new Tile(center, Board.Height - 1, BlockType.J),
+            new Tile(center + 1, Board.Height - 1, BlockType.J),
         ]);
     }
 
@@ -53,10 +53,10 @@ public static class BlockTemplates
         const int center = Board.Width / 2;
         
         return new Block([
-            new Tile(center - 1, Board.Height - 1),
-            new Tile(center, Board.Height - 1),
-            new Tile(center + 1, Board.Height - 1),
-            new Tile(center + 1, Board.Height),
+            new Tile(center - 1, Board.Height - 1, BlockType.L),
+            new Tile(center, Board.Height - 1, BlockType.L),
+            new Tile(center + 1, Board.Height - 1, BlockType.L),
+            new Tile(center + 1, Board.Height, BlockType.L),
         ]);
     }
 
@@ -65,10 +65,10 @@ public static class BlockTemplates
         const int center = Board.Width / 2;
         
         return new Block([
-            new Tile(center, Board.Height),
-            new Tile(center, Board.Height - 1),
-            new Tile(center + 1, Board.Height),
-            new Tile(center + 1, Board.Height - 1),
+            new Tile(center, Board.Height, BlockType.O),
+            new Tile(center, Board.Height - 1, BlockType.O),
+            new Tile(center + 1, Board.Height, BlockType.O),
+            new Tile(center + 1, Board.Height - 1, BlockType.O),
         ]);
     }
 
@@ -77,10 +77,10 @@ public static class BlockTemplates
         const int center = Board.Width / 2;
         
         return new Block([
-            new Tile(center - 1, Board.Height - 1),
-            new Tile(center, Board.Height - 1),
-            new Tile(center, Board.Height),
-            new Tile(center + 1, Board.Height),
+            new Tile(center - 1, Board.Height - 1, BlockType.S),
+            new Tile(center, Board.Height - 1, BlockType.S),
+            new Tile(center, Board.Height, BlockType.S),
+            new Tile(center + 1, Board.Height, BlockType.S),
         ]);
     }
 
@@ -89,10 +89,10 @@ public static class BlockTemplates
         const int center = Board.Width / 2;
         
         return new Block([
-            new Tile(center - 1, Board.Height),
-            new Tile(center, Board.Height),
-            new Tile(center, Board.Height - 1),
-            new Tile(center + 1, Board.Height - 1),
+            new Tile(center - 1, Board.Height, BlockType.Z),
+            new Tile(center, Board.Height, BlockType.Z),
+            new Tile(center, Board.Height - 1, BlockType.Z),
+            new Tile(center + 1, Board.Height - 1, BlockType.Z),
         ]);
     }
     private static Block ShapeT()
@@ -100,10 +100,10 @@ public static class BlockTemplates
         const int center = Board.Width / 2;
         
         return new Block([
-            new Tile(center - 1, Board.Height - 1),
-            new Tile(center, Board.Height - 1),
-            new Tile(center + 1, Board.Height - 1),
-            new Tile(center, Board.Height),
+            new Tile(center - 1, Board.Height - 1, BlockType.T),
+            new Tile(center, Board.Height - 1, BlockType.T),
+            new Tile(center + 1, Board.Height - 1, BlockType.T),
+            new Tile(center, Board.Height, BlockType.T),
         ]);
     }
     

@@ -1,8 +1,10 @@
-﻿namespace Tetris.ConsoleUi;
+﻿using Tetris.Enums;
+
+namespace Tetris.ConsoleUi;
 
 public class DebugPrinter : IPrinter
 {
-    public void Print(bool[,] updatedTiles)
+    public void Print(BlockType?[,] updatedTiles)
     {
         Console.WriteLine("------------------Print------------------");
 

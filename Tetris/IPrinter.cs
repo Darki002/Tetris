@@ -1,6 +1,8 @@
-﻿namespace Tetris;
+﻿using Tetris.Enums;
+
+namespace Tetris;
 
 public interface IPrinter
 {
-    void Print(bool[,] updatedTiles);
+    void Print(BlockType?[,] updatedTiles);
 }

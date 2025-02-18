@@ -6,21 +6,21 @@ public class Block(List<Tile> tiles)
 {
     public IReadOnlyList<Tile> Tiles => tiles;
 
-    public bool[,] AddTo(bool[,] board)
+    public BlockType?[,] AddTo(BlockType?[,] board)
     {
         foreach (var tile in tiles)
         {
-            board[tile.X, tile.Y] = true;
+            board[tile.X, tile.Y] = tile.BlockType;
         }
         
         return board;
     }
 
-    public void TryMove(Direction? moveDir, bool[,] boardTiles)
+    public void TryMove(Direction? moveDir, BlockType?[,] boardTiles)
     {
         tiles.ForEach(t => t.PreviewMove(moveDir));
         
-        if (tiles.All(t => t.PreviewX is < Board.Width and >= 0 && !boardTiles[t.PreviewX, t.PreviewY]))
+        if (tiles.All(t => t.PreviewX is < Board.Width and >= 0 && boardTiles[t.PreviewX, t.PreviewY] is null))
         {
             tiles.ForEach(t => t.CommitMove());
         }
