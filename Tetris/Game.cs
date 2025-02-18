@@ -17,7 +17,7 @@ public class Game
         this.printer = printer;
         board = new Board();
         timer = new Timer();
-        timer.Interval = 1000 * 2;
+        timer.Interval = 750;
         timer.Elapsed += GameLoop;
     }
 
