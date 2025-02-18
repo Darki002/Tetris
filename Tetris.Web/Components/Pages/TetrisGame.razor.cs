@@ -28,10 +28,10 @@ public partial class TetrisGame : IPrinter
         switch (obj.Key)
         {
             case "ArrowRight":
-                game.SetNextMoveDir(Direction.Right);
+                game.SetNextMoveDir(BlockAction.Right);
                 break;
             case "ArrowLeft":
-                game.SetNextMoveDir(Direction.Left);
+                game.SetNextMoveDir(BlockAction.Left);
                 break;
         }
     }

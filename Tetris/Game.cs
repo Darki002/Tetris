@@ -49,10 +49,10 @@ public class Game
         printer.Print(currentBlock.AddTo(board.Tiles));
     }
 
-    public void SetNextMoveDir(Direction direction)
+    public void SetNextMoveDir(BlockAction blockAction)
     {
         if(currentBlock is null) return;
-        currentBlock.TryMove(direction, board.Tiles);
+        currentBlock.TryMove(blockAction, board.Tiles);
         printer.Print(currentBlock.AddTo(board.Tiles));
     }
 }

@@ -16,7 +16,10 @@ public class Block(List<Tile> tiles)
         return board;
     }
 
-    public void TryMove(Direction? moveDir, BlockType?[,] boardTiles)
+    // https://tetris.fandom.com/wiki/Sega_Rotation
+    // https://tetris.fandom.com/wiki/SRS
+    
+    public void TryMove(BlockAction? moveDir, BlockType?[,] boardTiles)
     {
         tiles.ForEach(t => t.PreviewMove(moveDir));
         
@@ -28,7 +31,7 @@ public class Block(List<Tile> tiles)
 
     public void MoveDown() => tiles.ForEach(t => t.MoveDown());
 
-    public List<Tile> TryRotation(Direction rotationDirection)
+    public List<Tile> TryRotation(BlockAction rotationBlockAction)
     {
         // TODO preview rotation and then commit on tiles
         throw new NotImplementedException();

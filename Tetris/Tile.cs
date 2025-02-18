@@ -14,26 +14,26 @@ public class Tile(int x, int y, BlockType blockType)
     
     public void MoveDown() => Y--;
     
-    public void PreviewMove(Direction? moveDir)
+    public void PreviewMove(BlockAction? moveAction)
     {
         PreviewX = X;
         PreviewY = Y;
         
-        switch (moveDir)
+        switch (moveAction)
         {
-            case Direction.Down:
+            case BlockAction.Down:
                 PreviewY = Y - 1;
                 break;
-            case Direction.Left:
+            case BlockAction.Left:
                 PreviewX = X - 1;
                 break;
-            case Direction.Right:
+            case BlockAction.Right:
                 PreviewX = X + 1;
                 break;
             case null:
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(moveDir), moveDir, null);
+                throw new ArgumentOutOfRangeException(nameof(moveAction), moveAction, null);
         }
     }
 

@@ -18,10 +18,10 @@ public static class Program
             switch (key.Key)
             {
                 case ConsoleKey.RightArrow:
-                    game.SetNextMoveDir(Direction.Right);
+                    game.SetNextMoveDir(BlockAction.Right);
                     break;
                 case ConsoleKey.LeftArrow:
-                    game.SetNextMoveDir(Direction.Left);
+                    game.SetNextMoveDir(BlockAction.Left);
                     break;
             }
         }
